@@ -12,6 +12,8 @@ import {
   getPokemonEvolutionaryChain,
   filterPokemonForCard,
   filterPokemonForDexEntry,
+  filterPokemonClassification,
+  filterPokemonEvoChain,
 } from "../utils/pokeapi";
 
 import PokemonContext from "../contexts/PokemonContext";
@@ -60,11 +62,74 @@ function App() {
     setCounter(finish);
   };
 
+  const pushPokemonIntoArray = (data, array) => {
+    array.push({
+      chainNumber: data.id,
+      name: data.name,
+      sprite: data.sprites.front_default,
+    });
+  };
+
   const fetchDexPokemon = async (pokemon, isCancelled) => {
     if (!isCancelled) {
       const pokemonSpeciesData = await getPokemonSpecies(pokemon.number);
       pokemon.entry = filterPokemonForDexEntry(pokemonSpeciesData);
-      // console.log(pokemon);
+      pokemon.classification = filterPokemonClassification(pokemonSpeciesData);
+
+      let workingChain = [];
+
+      await filterPokemonEvoChain(pokemonSpeciesData.evolution_chain.url).then(
+        //still needs work for branch evolutions
+        async (dataChain) => {
+          if (dataChain.chain.species.name === pokemonSpeciesData.name) {
+            workingChain.push({
+              chainNumber: pokemon.number,
+              name: pokemon.name,
+              sprite: pokemon.sprite,
+            });
+
+            if (dataChain.chain.evolves_to[0]) {
+              await getPokemon(dataChain.chain.evolves_to[0].species.name).then(
+                (data) => {
+                  pushPokemonIntoArray(data, workingChain);
+                }
+              );
+            }
+
+            if (dataChain.chain.evolves_to[0].evolves_to[0]) {
+              await getPokemon(
+                dataChain.chain.evolves_to[0].evolves_to[0].species.name
+              ).then((data) => {
+                pushPokemonIntoArray(data, workingChain);
+              });
+            }
+          } else {
+            await getPokemon(dataChain.chain.species.name).then((data) => {
+              pushPokemonIntoArray(data, workingChain);
+            });
+
+            if (dataChain.chain.evolves_to[0]) {
+              await getPokemon(dataChain.chain.evolves_to[0].species.name).then(
+                (data) => {
+                  pushPokemonIntoArray(data, workingChain);
+                }
+              );
+            }
+
+            if (dataChain.chain.evolves_to[0].evolves_to[0]) {
+              await getPokemon(
+                dataChain.chain.evolves_to[0].evolves_to[0].species.name
+              ).then((data) => {
+                pushPokemonIntoArray(data, workingChain);
+              });
+            }
+          }
+        }
+      );
+
+      pokemon.evoChain = workingChain;
+
+      console.log(pokemon);
       setActivePokemon(pokemon);
     }
   };

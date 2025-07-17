@@ -1,5 +1,6 @@
 .pokemon__entry {
   display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 10px;
   height: 100%;
@@ -10,32 +11,64 @@
   position: relative;
 }
 
+.pokemon__entry-top-half {
+  display: flex;
+}
+
 .pokemon__entry-image {
-  height: 240px;
-  width: 240px;
+  height: 200px;
+  width: 200px;
   background-size: auto;
 }
 
 .pokemon__name-and-type {
   display: flex;
+  margin: 10px 0;
 }
 
 .pokemon__entry-name {
   margin: 0 0 0 10px;
   height: 40px;
   width: 210px;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   color: rgba(222, 222, 222, 255);
   text-align: start;
 }
 
+.pokemon__classification {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: start;
+}
+
 .pokemon__pokedex-info {
   margin: 10px 0;
-  height: 120px;
+  height: 100px;
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
+  text-align: start;
+}
+
+.pokemon__evolution {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemon__evo-chain-title {
+  max-height: 40px;
+  width: 100%;
+  margin: 0;
+  font-size: 20px;
+}
+
+.pokemon__evo-chain {
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .pokemon__close {

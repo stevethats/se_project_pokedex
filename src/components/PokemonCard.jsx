@@ -15,7 +15,7 @@ function PokemonCard({ pokemon, captializeName, handleCardClick }) {
         className="pokemon__image"
       />
       <h2 className="pokemon__name">{captializeName(pokemon.name)}</h2>
-      <TypeCard pokemon={pokemon} />
+      {pokemon.typePrimary && <TypeCard pokemon={pokemon} />}
     </section>
   );
 }

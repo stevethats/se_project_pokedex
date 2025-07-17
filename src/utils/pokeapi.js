@@ -11,8 +11,14 @@ function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
-function getPokemon(number) {
-  return request(`${baseUrl}/pokemon/${number}`);
+function checkDataEmpty(data) {
+  if (!data) {
+    return null;
+  }
+}
+
+function getPokemon(data) {
+  return request(`${baseUrl}/pokemon/${data}`);
 }
 
 function getPokemonSpecies(number) {
@@ -24,9 +30,7 @@ function getPokemonEvolutionaryChain(url, number) {
 }
 
 function filterPokemonForCard(data) {
-  if (!data) {
-    return null;
-  }
+  checkDataEmpty(data);
   const pokemon = {};
   pokemon.number = data.id;
   pokemon.name = data.name;
@@ -39,15 +43,44 @@ function filterPokemonForCard(data) {
 }
 
 function filterPokemonForDexEntry(data) {
-  if (!data) {
-    return null;
+  checkDataEmpty(data);
+  const entryList = data.flavor_text_entries;
+  let entry = "No data";
+  entryList.forEach((listItem) => {
+    if (listItem.language.name === "en" && listItem.version.name === "sword") {
+      entry = listItem.flavor_text;
+    }
+  });
+  if (entry === "No data") {
+    entryList.forEach((listItem) => {
+      if (listItem.language.name === "en") {
+        entry = listItem.flavor_text;
+      }
+    });
   }
-  const entry = data.flavor_text_entries[0].flavor_text;
   const editedEntry = entry
     .replaceAll("\f", " ")
     .replaceAll("POKéMON", "Pokémon");
   return editedEntry;
 }
+
+function filterPokemonClassification(data) {
+  checkDataEmpty(data);
+  const classificationList = data.genera;
+  let classification;
+  classificationList.forEach((listItem) => {
+    if (listItem.language.name === "en") {
+      classification = listItem.genus;
+    }
+  });
+  return classification;
+}
+
+const filterPokemonEvoChain = async (data) => {
+  checkDataEmpty(data);
+  const evoData = await getPokemonEvolutionaryChain(data);
+  return evoData;
+};
 
 export {
   getPokemon,
@@ -55,4 +88,6 @@ export {
   getPokemonEvolutionaryChain,
   filterPokemonForCard,
   filterPokemonForDexEntry,
+  filterPokemonClassification,
+  filterPokemonEvoChain,
 };

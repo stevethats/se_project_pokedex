@@ -1,0 +1,18 @@
+.pokemon__evo-card {
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  width: 220px;
+  align-items: center;
+}
+
+.pokemon__evo-image {
+  height: 130px;
+  width: 130px;
+}
+
+.pokemon__evo-name {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 500;
+}

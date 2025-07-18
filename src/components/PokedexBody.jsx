@@ -3,7 +3,6 @@ import React from "react";
 import "./PokedexBody.css";
 import PokemonCard from "./PokemonCard";
 
-import { getPokemon, filterPokemonForCard } from "../utils/pokeapi";
 import PokemonContext from "../contexts/PokemonContext";
 import PokemonEntry from "./PokemonEntry";
 

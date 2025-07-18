@@ -9,7 +9,6 @@ import About from "./About";
 import {
   getPokemon,
   getPokemonSpecies,
-  getPokemonEvolutionaryChain,
   filterPokemonForCard,
   filterPokemonForDexEntry,
   filterPokemonClassification,

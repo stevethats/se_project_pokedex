@@ -8,17 +8,6 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  define: {
-    global: "globalThis",
-  },
-  resolve: {
-    alias: {
-      crypto: "crypto-browserify",
-    },
-  },
-  optimizeDeps: {
-    include: ["crypto-browserify"],
-  },
   build: {
     commonjsOptions: {
       transformMixedEsModules: true,

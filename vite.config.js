@@ -19,4 +19,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ["crypto-browserify"],
   },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
 });

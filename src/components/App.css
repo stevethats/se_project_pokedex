@@ -5,3 +5,9 @@
   text-align: center;
   background-color: rgba(108, 4, 21, 255);
 }
+
+@media screen and (max-width: 580px) {
+  #root {
+    padding: 20px;
+  }
+}

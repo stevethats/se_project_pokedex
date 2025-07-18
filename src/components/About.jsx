@@ -60,10 +60,6 @@ function About() {
             <div className="about__black-button-rim about__black-button-right"></div>
             <div className="about__black-button about__black-button-right"></div>
           </span>
-          <span className="about__white-button-rim-container">
-            <div className="about__white-button-rim"></div>
-            <div className="about__white-button-rim"></div>
-          </span>
           <span className="about__white-button-container">
             <div className="about__white-button"></div>
             <div className="about__white-button"></div>

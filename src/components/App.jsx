@@ -129,7 +129,7 @@ function App() {
 
       pokemon.evoChain = workingChain;
 
-      console.log(pokemon);
+      // console.log(pokemon);
       setActivePokemon(pokemon);
     }
   };

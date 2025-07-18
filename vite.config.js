@@ -12,5 +12,8 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    rollupOptions: {
+      external: ["crypto"],
+    },
   },
 });

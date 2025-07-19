@@ -1,0 +1,9 @@
+.pokemon__type-container {
+  height: 40px;
+  width: 80px;
+}
+
+.pokemon__type {
+  height: 40px;
+  width: 40px;
+}

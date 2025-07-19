@@ -1,0 +1,48 @@
+.title {
+  color: red;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__home {
+  display: flex;
+}
+
+.header__home:hover {
+  cursor: pointer;
+}
+
+.header__home-image {
+  max-width: 25px;
+  max-height: 25px;
+  align-self: center;
+  margin-right: 15px;
+}
+
+.header__home-label {
+  margin: 0;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.header__home-label:visited {
+  color: inherit;
+}
+
+.header__about {
+  margin: 0;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.header__about:hover {
+  cursor: pointer;
+}
+.header__about:visited {
+  color: inherit;
+}

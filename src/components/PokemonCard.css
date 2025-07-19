@@ -1,0 +1,31 @@
+.pokemon__card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 10px;
+  height: 250px;
+  width: 190px;
+  background-color: rgba(222, 222, 222, 30%);
+  border-radius: 5px;
+  align-items: center;
+}
+
+.pokemon__card:hover {
+  cursor: pointer;
+  border: solid 1px white;
+}
+
+.pokemon__image {
+  height: 165px;
+  max-width: 100%;
+  background-size: auto;
+}
+
+.pokemon__name {
+  margin: 0 0 5px 0;
+  height: 40px;
+  width: 210px;
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(222, 222, 222, 255);
+}

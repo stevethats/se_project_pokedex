@@ -170,33 +170,31 @@ function App() {
   }, []);
 
   return (
-    <>
-      <PokemonContext.Provider
-        value={{
-          pokemonList,
-          setPokemonList,
-          counter,
-          captializeName,
-          popUpVisible,
-          setPopUpVisible,
-          activePokemon,
-        }}
-      >
-        <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Pokedex
-                handleShowMore={handleShowMore}
-                handleCardClick={handleCardClick}
-              />
-            }
-          />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </PokemonContext.Provider>
-    </>
+    <PokemonContext.Provider
+      value={{
+        pokemonList,
+        setPokemonList,
+        counter,
+        captializeName,
+        popUpVisible,
+        setPopUpVisible,
+        activePokemon,
+      }}
+    >
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Pokedex
+              handleShowMore={handleShowMore}
+              handleCardClick={handleCardClick}
+            />
+          }
+        />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </PokemonContext.Provider>
   );
 }
 

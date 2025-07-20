@@ -38,7 +38,11 @@ function About() {
       </section>
       <section className="about__body">
         <div className="about__screen">
-          <img className="about__screen-image" src={selectedPhoto.image} />
+          <img
+            className="about__screen-image"
+            src={selectedPhoto.image}
+            alt={selectedPhoto.alt}
+          />
           <p className="about__screen-message">{selectedPhoto.message}</p>
         </div>
         <div className="about__photo-selector-section">

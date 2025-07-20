@@ -8,11 +8,14 @@ function checkResponse(res) {
 }
 
 function request(url, options) {
-  return fetch(url, options).then(checkResponse);
+  return fetch(url, options)
+    .then(checkResponse)
+    .catch((err) => console.error(err));
 }
 
 function checkDataEmpty(data) {
   if (!data) {
+    console.log("Data missing");
     return null;
   }
 }

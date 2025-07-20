@@ -77,54 +77,74 @@ function App() {
 
       let workingChain = [];
 
-      await filterPokemonEvoChain(pokemonSpeciesData.evolution_chain.url).then(
-        //still needs work for branch evolutions
-        async (dataChain) => {
-          if (dataChain.chain.species.name === pokemonSpeciesData.name) {
-            workingChain.push({
-              chainNumber: pokemon.number,
-              name: pokemon.name,
-              sprite: pokemon.sprite,
-            });
-
-            if (dataChain.chain.evolves_to[0]) {
-              await getPokemon(dataChain.chain.evolves_to[0].species.name).then(
-                (data) => {
-                  pushPokemonIntoArray(data, workingChain);
-                }
-              );
-            }
-
-            if (dataChain.chain.evolves_to[0].evolves_to[0]) {
-              await getPokemon(
-                dataChain.chain.evolves_to[0].evolves_to[0].species.name
-              ).then((data) => {
-                pushPokemonIntoArray(data, workingChain);
+      await filterPokemonEvoChain(pokemonSpeciesData.evolution_chain.url)
+        .then(
+          //still needs work for branch evolutions
+          async (dataChain) => {
+            if (dataChain.chain.species.name === pokemonSpeciesData.name) {
+              workingChain.push({
+                chainNumber: pokemon.number,
+                name: pokemon.name,
+                sprite: pokemon.sprite,
               });
-            }
-          } else {
-            await getPokemon(dataChain.chain.species.name).then((data) => {
-              pushPokemonIntoArray(data, workingChain);
-            });
 
-            if (dataChain.chain.evolves_to[0]) {
-              await getPokemon(dataChain.chain.evolves_to[0].species.name).then(
-                (data) => {
+              if (dataChain.chain.evolves_to[0]) {
+                await getPokemon(dataChain.chain.evolves_to[0].species.name)
+                  .then((data) => {
+                    pushPokemonIntoArray(data, workingChain);
+                  })
+                  .catch((err) => {
+                    console.error("Error fetching Stage 2 Pokemon: " + err);
+                  });
+              }
+
+              if (dataChain.chain.evolves_to[0].evolves_to[0]) {
+                await getPokemon(
+                  dataChain.chain.evolves_to[0].evolves_to[0].species.name
+                )
+                  .then((data) => {
+                    pushPokemonIntoArray(data, workingChain);
+                  })
+                  .catch((err) => {
+                    console.error("Error fetching Stage 3 Pokemon: " + err);
+                  });
+              }
+            } else {
+              await getPokemon(dataChain.chain.species.name)
+                .then((data) => {
                   pushPokemonIntoArray(data, workingChain);
-                }
-              );
-            }
+                })
+                .catch((err) => {
+                  console.error("Error fetching Stage 1 Pokemon: " + err);
+                });
 
-            if (dataChain.chain.evolves_to[0].evolves_to[0]) {
-              await getPokemon(
-                dataChain.chain.evolves_to[0].evolves_to[0].species.name
-              ).then((data) => {
-                pushPokemonIntoArray(data, workingChain);
-              });
+              if (dataChain.chain.evolves_to[0]) {
+                await getPokemon(dataChain.chain.evolves_to[0].species.name)
+                  .then((data) => {
+                    pushPokemonIntoArray(data, workingChain);
+                  })
+                  .catch((err) => {
+                    console.error("Error fetching Stage 2 Pokemon: " + err);
+                  });
+              }
+
+              if (dataChain.chain.evolves_to[0].evolves_to[0]) {
+                await getPokemon(
+                  dataChain.chain.evolves_to[0].evolves_to[0].species.name
+                )
+                  .then((data) => {
+                    pushPokemonIntoArray(data, workingChain);
+                  })
+                  .catch((err) => {
+                    console.error("Error fetching Stage 3 Pokemon: " + err);
+                  });
+              }
             }
           }
-        }
-      );
+        )
+        .catch((err) => {
+          console.error("Error fetch evolution chain: " + err);
+        });
 
       pokemon.evoChain = workingChain;
 

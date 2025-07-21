@@ -1,0 +1,245 @@
+.about {
+  display: flex;
+  flex-direction: column;
+}
+
+/* || HEADER */
+
+.about__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__title-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about__title {
+  color: rgba(159, 139, 15, 255);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.about__luxury-ball-image {
+  max-height: 80px;
+}
+
+.about__header-text {
+  margin-top: 0px;
+  margin-bottom: 8px;
+  max-width: 800px;
+  font-weight: 500;
+}
+
+/* || ABOUT DESCRIPTION */
+
+.about__body {
+  height: 700px;
+  max-width: 100vw;
+  background-color: rgba(137, 6, 28, 255);
+  padding: 10px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.about__screen {
+  height: 520px;
+  background-color: rgba(35, 35, 35, 255);
+  display: flex;
+  justify-content: space-around;
+}
+
+.about__screen-image {
+  max-width: 60%;
+  background-size: cover;
+}
+
+.about__screen-message {
+  text-align: center;
+  align-content: center;
+  margin: 0;
+  padding: 20px;
+  max-width: 50%;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* || PHOTO SELECTOR */
+
+.about__photo-selector-section {
+  position: relative;
+}
+
+.about__button-label {
+  margin: 0;
+  position: absolute;
+  left: 80px;
+  top: 8px;
+  color: rgba(159, 139, 15, 255);
+  font-weight: 700;
+}
+
+.about__blue-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  height: 80px;
+  width: 280px;
+}
+
+.about__blue-button {
+  height: 40px;
+  width: 50px;
+  background-color: rgba(40, 170, 253, 255);
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+.about__blue-button:hover {
+  cursor: pointer;
+  background-color: rgba(161, 218, 254, 255);
+}
+
+/* || EXTRA DECOR */
+
+.about__black-button {
+  height: 10px;
+  width: 40px;
+  background-color: rgba(0, 46, 41, 255);
+  border-radius: 5px;
+}
+
+.about__black-button-rim {
+  height: 13px;
+  width: 42px;
+  background-color: rgba(0, 0, 0, 255);
+  border-radius: 5px;
+}
+
+.about__black-button-left {
+  position: absolute;
+  left: 150px;
+  top: 660px;
+}
+
+.about__black-button-right {
+  position: absolute;
+  left: 198px;
+  top: 660px;
+}
+
+.about__white-button-container {
+  display: flex;
+  position: absolute;
+  top: 570px;
+  right: 169px;
+  gap: 0;
+}
+
+.about__white-button {
+  height: 38px;
+  width: 48px;
+  background-color: rgba(222, 222, 222, 255);
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+.about__black-decor-screen {
+  height: 38px;
+  width: 110px;
+  background-color: rgba(0, 46, 41, 255);
+  border-radius: 5px;
+  border: solid 2px black;
+}
+
+.about__black-decor-screen-left {
+  position: absolute;
+  right: 154px;
+  top: 635px;
+}
+
+.about__black-decor-screen-right {
+  position: absolute;
+  right: 20px;
+  top: 635px;
+}
+
+.about__yellow-light {
+  height: 30px;
+  width: 30px;
+  background-color: rgba(255, 223, 24, 255);
+  position: absolute;
+  right: 20px;
+  top: 580px;
+  border-radius: 50%;
+}
+
+.about__yellow-light-rim {
+  height: 32px;
+  width: 32px;
+  background-color: rgba(0, 0, 0, 255);
+  position: absolute;
+  right: 18px;
+  top: 581px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .about__screen {
+    flex-direction: column;
+  }
+
+  .about__screen-image {
+    max-width: 100%;
+    align-self: center;
+    max-height: 330px;
+  }
+
+  .about__screen-message {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .about__body {
+    height: 780px;
+  }
+
+  .about__screen-image {
+    max-height: 240px;
+  }
+
+  .about__screen-message {
+    font-size: 16px;
+  }
+
+  .about__white-button-container {
+    left: 20px;
+    top: 680px;
+  }
+
+  .about__black-decor-screen-left {
+    left: 20px;
+    top: 745px;
+  }
+
+  .about__black-decor-screen-right {
+    left: 156px;
+    top: 745px;
+  }
+
+  .about__yellow-light {
+    left: 238px;
+    top: 690px;
+  }
+
+  .about__yellow-light-rim {
+    left: 238px;
+    top: 691px;
+  }
+}
